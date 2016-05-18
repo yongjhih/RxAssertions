@@ -1,6 +1,6 @@
 # RxAssertions
 
-[![Status](https://travis-ci.com/yongjhih/rxassertions.svg)](https://travis-ci.org/yongjhih/rxassertions)
+[![Build Status](https://travis-ci.org/yongjhih/rxassertions.svg)](https://travis-ci.org/yongjhih/rxassertions)
 
 RxAssertions is a simple idea for better RxJava assertions.
 
