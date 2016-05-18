@@ -1,4 +1,4 @@
-package br.ufs.github.rxassertions;
+package rx.assertions;
 
 import rx.Completable;
 import rx.Observable;

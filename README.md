@@ -1,8 +1,8 @@
 # RxAssertions
 
-[![Status](https://travis-ci.com/ubiratansoares/rxassertions.svg?token=RHSqKpkhyMned4PZSn8q&branch=master)](https://travis-ci.org/ubiratansoares/rxassertions)  
+[![Status](https://travis-ci.com/yongjhih/rxassertions.svg)](https://travis-ci.org/yongjhih/rxassertions)
 
-RxAssertions is a simple idea for better RxJava assertions. 
+RxAssertions is a simple idea for better RxJava assertions.
 
 I found the original idea from the guys of [Ribot](https://github.com/ribot/assertj-rx) : in fact, I think this a good idea and helps to keep tests clean.
 
@@ -67,7 +67,8 @@ Add the dependency
 ```groovy
 dependencies {
 	...
-	testCompile 'com.github.ubiratansoares:rxassertions:0.2.0'
+	testCompile 'com.github.yongjhih:rxassertions:-SNAPSHOT'
+	// testCompile 'com.github.yongjhih:rxassertions:0.2.1'
 }
 ```
 RxAssertions uses RxJava `1.1.5` and AssertJ `2.4.1` as dependencies.
@@ -84,6 +85,7 @@ PRs are wellcome. :rocket:
 # License
 
 ```
+Copyright (C) 2016 Andrew Chen
 Copyright (C) 2016 Ubiratan Soares
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -98,5 +100,4 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 ```
-
 

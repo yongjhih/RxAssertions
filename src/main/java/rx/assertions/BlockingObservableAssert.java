@@ -1,4 +1,4 @@
-package br.ufs.github.rxassertions;
+package rx.assertions;
 
 import org.assertj.core.api.AbstractAssert;
 import rx.Notification;
@@ -92,4 +92,7 @@ public class BlockingObservableAssert<T>
         return this;
     }
 
+    public BlockingObservableAssert<T> expectedTrue(Boolean expected) {
+        return expectedSingleValue((T) expected); // FIXME
+    }
 }
