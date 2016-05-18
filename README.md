@@ -51,7 +51,7 @@ RxAssertions.assertThat(single).completes().expectedSingleValue("RxJava");
 
 You can find other examples at `test` folder
 
-# Setup
+## Setup
 
 Add it in your `build.gradle`
 
@@ -73,16 +73,28 @@ dependencies {
 ```
 RxAssertions uses RxJava `1.1.5` and AssertJ `2.4.1` as dependencies.
 
-# Contributing
+## TODO
+
+```java
+Observable.just("RxJava", "Assertions")
+    .assertHasSize(2)
+    .filter(s -> "RxJava".equals(s))
+    .assertHasSize(1)
+    .assertWithoutErrors()
+    .assertValues("RxJava")
+    .subscribe();
+```
+
+## Contributing
 
 PRs are wellcome. :rocket:
 
-# Credits
+## Credits
 
 - Ribot guys for the original idea
 - RxJava and AssertJ guys for these awesome libraries
 
-# License
+## License
 
 ```
 Copyright (C) 2016 Andrew Chen
