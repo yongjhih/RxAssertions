@@ -20,7 +20,7 @@ public class RxAssertions {
     }
 
     public static <T> BlockingObservableAssert<T> assertThat(Completable completable) {
-        return assertThat(completable.toObservable());
+        return assertThat(completable.<T>toObservable());
     }
 
     public static <T> BlockingObservableAssert<T> assertThat(Single<T> single) {
