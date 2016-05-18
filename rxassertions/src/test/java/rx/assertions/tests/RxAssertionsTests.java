@@ -1,6 +1,6 @@
-package br.ufs.github.rxassertions.tests;
+package rx.assertions.tests;
 
-import br.ufs.github.rxassertions.RxAssertions;
+import rx.assertions.RxAssertions;
 import org.junit.Test;
 import rx.Completable;
 import rx.Observable;
@@ -25,12 +25,20 @@ public class RxAssertionsTests {
     }
 
     @Test public void factoryMethod_Single_ReturnsNotNull() {
-        Single<Boolean> single = Single.fromCallable(() -> Boolean.TRUE);
+        Single<Boolean> single = Single.fromCallable(new java.util.concurrent.Callable<Boolean>() {
+            @Override public Boolean call() {
+                return Boolean.TRUE;
+            }
+        });
         assertThat(RxAssertions.assertThat(single)).isNotNull();
     }
 
     @Test public void factoryMethod_Completable_ReturnsNotNull() {
-        Completable completable = Completable.fromCallable(() -> "Done");
+        Completable completable = Completable.fromCallable(new java.util.concurrent.Callable<String>() {
+            @Override public String call() {
+                return "Done";
+            }
+        });
         assertThat(RxAssertions.assertThat(completable)).isNotNull();
     }
 
@@ -77,7 +85,11 @@ public class RxAssertionsTests {
     }
 
     @Test public void single_CompletesWithExpectedValue() {
-        Single<String> single = Single.fromCallable(() -> "RxJava");
+        Single<String> single = Single.fromCallable(new java.util.concurrent.Callable<String>() {
+            @Override public String call() {
+                return "RxJava";
+            }
+        });
         RxAssertions.assertThat(single).completes().expectedSingleValue("RxJava");
     }
 

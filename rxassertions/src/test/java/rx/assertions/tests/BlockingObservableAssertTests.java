@@ -1,6 +1,6 @@
-package br.ufs.github.rxassertions.tests;
+package rx.assertions.tests;
 
-import br.ufs.github.rxassertions.BlockingObservableAssert;
+import rx.assertions.BlockingObservableAssert;
 import org.junit.Test;
 import rx.Observable;
 import rx.observables.BlockingObservable;
