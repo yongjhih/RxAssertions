@@ -50,7 +50,7 @@ public class BlockingObservableAssert<T>
         return this;
     }
 
-    public BlockingObservableAssert<T> failsWithThrowable(Class thowableClazz) {
+    public BlockingObservableAssert<T> failsWithThrowable(Class<? extends Throwable> thowableClazz) {
         assertThat(onErrorEvents).isNotNull();
         assertThat(onErrorEvents.get(0)).isInstanceOf(thowableClazz);
         return this;
