@@ -92,7 +92,16 @@ public class BlockingObservableAssert<T>
         return this;
     }
 
-    public BlockingObservableAssert<T> expectedTrue(Boolean expected) {
+    @SuppressWarnings("unchecked")
+    public BlockingObservableAssert<T> expectedBoolean(Boolean expected) {
         return expectedSingleValue((T) expected); // FIXME
+    }
+
+    public BlockingObservableAssert<T> expectedTrue() {
+        return expectedBoolean(true);
+    }
+
+    public BlockingObservableAssert<T> expectedFalse() {
+        return expectedBoolean(false);
     }
 }

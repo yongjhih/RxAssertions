@@ -83,5 +83,17 @@ public class BlockingObservableAssertTests {
         new BlockingObservableAssert<>(obs).expectedValues("Expected", "Values");
     }
 
+    @Test public void withExpectedFalse_ShouldPass() {
+        List<String> expected = Arrays.asList("Expected", "Values");
+        BlockingObservable<Boolean> obs = Observable.from(expected).isEmpty().toBlocking();
+        new BlockingObservableAssert<>(obs).expectedFalse();
+    }
+
+    @Test public void withExpectedTrue_ShouldPass() {
+        List<String> expected = Collections.emptyList();
+        BlockingObservable<Boolean> obs = Observable.from(expected).isEmpty().toBlocking();
+        new BlockingObservableAssert<>(obs).expectedTrue();
+    }
+
 
 }
