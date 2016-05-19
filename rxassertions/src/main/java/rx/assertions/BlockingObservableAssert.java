@@ -7,6 +7,7 @@ import rx.observers.TestSubscriber;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Collection;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -84,11 +85,14 @@ public class BlockingObservableAssert<T>
     }
 
     public BlockingObservableAssert<T> expectedValues(T... expected) {
-        List<T> ordered = Arrays.asList(expected);
+        return expectedValues(Arrays.asList(expected));
+    }
+
+    public BlockingObservableAssert<T> expectedValues(Collection<T> expected) {
         assertThat(onNextEvents)
                 .isNotNull()
                 .isNotEmpty()
-                .hasSameElementsAs(ordered);
+                .hasSameElementsAs(expected);
         return this;
     }
 
