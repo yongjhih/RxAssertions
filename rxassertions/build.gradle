@@ -1,10 +1,23 @@
+buildscript {
+    repositories {
+        jcenter()
+        maven { url "https://jitpack.io" }
+    }
+
+    dependencies {
+        classpath 'com.novoda:bintray-release:0.3.4'
+        classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:2.6.3'
+    }
+}
+
 apply plugin: 'java'
 apply plugin: 'maven'
 
-sourceCompatibility = 1.7
+sourceCompatibility = JavaVersion.VERSION_1_7
+targetCompatibility = JavaVersion.VERSION_1_7
 
 repositories {
-    mavenCentral()
+    jcenter()
 }
 
 def RXJAVA_VERSION = '1.1.5'
@@ -26,3 +39,6 @@ test {
         exceptionFormat 'full'
     }
 }
+
+apply from: 'javadoc.gradle'
+apply from: 'jacoco-coveralls.gradle'

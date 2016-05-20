@@ -7,3 +7,7 @@ cache:
     - $HOME/.gradle
     - $HOME/.m2
 
+script:
+    - ./gradlew clean assemble check
+after_success:
+    - ./gradlew jacocoTestReport coveralls

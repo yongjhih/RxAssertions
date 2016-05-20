@@ -1,6 +1,9 @@
 # RxAssertions
 
+[![JitPack](https://img.shields.io/github/tag/yongjhih/rxassertions.svg?label=JitPack)](https://jitpack.io/#yongjhih/rxassertions)
+[![javadoc](https://img.shields.io/github/tag/yongjhih/rxassertions.svg?label=javadoc)](https://jitpack.io/com/github/yongjhih/rxassertions/-SNAPSHOT/javadoc/)
 [![Build Status](https://travis-ci.org/yongjhih/rxassertions.svg)](https://travis-ci.org/yongjhih/rxassertions)
+[![Coverage Status](https://coveralls.io/repos/github/yongjhih/rxassertions/badge.svg)](https://coveralls.io/github/yongjhih/rxassertions)
 
 RxAssertions is a simple idea for better RxJava assertions.
 

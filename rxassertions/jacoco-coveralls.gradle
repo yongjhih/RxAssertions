@@ -1,0 +1,28 @@
+apply plugin: 'jacoco'
+
+//jacoco {
+//    toolVersion = "0.7.6.201602180812"
+//}
+
+jacocoTestReport {
+    reports {
+        xml.enabled = true // coveralls plugin depends on xml format report
+        html.enabled = true
+    }
+}
+
+// Setup: classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:2.6.3'
+apply plugin: 'com.github.kt3k.coveralls'
+
+coveralls {
+    jacocoReportPath "$buildDir/reports/jacoco/test/jacocoTestReport.xml"
+}
+
+tasks.jacocoTestReport {
+    dependsOn 'test'
+}
+
+//tasks.coveralls {
+//    dependsOn 'check'
+//}
+
