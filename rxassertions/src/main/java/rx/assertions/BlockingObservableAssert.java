@@ -90,6 +90,10 @@ public class BlockingObservableAssert<T>
         return this;
     }
 
+    public BlockingObservableAssert<T> expectedValues() {
+        return emitsNothing();
+    }
+
     public BlockingObservableAssert<T> expectedValues(T... expected) {
         return expectedValues(Arrays.asList(expected));
     }
