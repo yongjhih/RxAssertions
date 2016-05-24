@@ -94,5 +94,15 @@ public class ObservableAssertTests {
         new ObservableAssert<>(obs).expectedTrue();
     }
 
+    @Test public void withExpectedValuesWithEmpty() {
+        Observable<String> obs = Observable.empty();
+        new ObservableAssert<>(obs).expectedValues();
+    }
+
+    @Test public void unsubscribe() {
+        Observable<String> obs = Observable.empty();
+        new ObservableAssert<>(obs).expectedValues().unsubscribe();
+        new ObservableAssert<>(obs).expectedValues().unsubscribe().expectedValues().unsubscribe();
+    }
 
 }
