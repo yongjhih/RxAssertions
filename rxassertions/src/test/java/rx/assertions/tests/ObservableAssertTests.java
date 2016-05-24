@@ -7,6 +7,9 @@ import rx.Observable;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.ArrayList;
+import rx.functions.Action0;
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * Created by ubiratansoares on 5/11/16.
@@ -103,6 +106,17 @@ public class ObservableAssertTests {
         Observable<String> obs = Observable.empty();
         new ObservableAssert<>(obs).expectedValues().unsubscribe();
         new ObservableAssert<>(obs).expectedValues().unsubscribe().expectedValues().unsubscribe();
+    }
+
+    @Test public void then() {
+        final List<String> expected = new ArrayList<>();
+        Observable<String> obs = Observable.from(expected);
+        new ObservableAssert<>(obs).expectedValues().then(new Action0() {
+            @Override public void call() {
+                expected.add("hello");
+            }
+        }).expectedValues();
+        assertThat(expected).contains("hello");
     }
 
 }
