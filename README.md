@@ -5,6 +5,8 @@
 [![Build Status](https://travis-ci.org/yongjhih/rxassertions.svg)](https://travis-ci.org/yongjhih/rxassertions)
 [![Coverage Status](https://coveralls.io/repos/github/yongjhih/rxassertions/badge.svg)](https://coveralls.io/github/yongjhih/rxassertions)
 
+![RxAssertions](https://github.com/yongjhih/rxassertions/raw/master/art/rxassertions.png)
+
 RxAssertions is a simple idea for better RxJava assertions.
 
 I found the original idea from the guys of [Ribot](https://github.com/ribot/assertj-rx) : in fact, I think this a good idea and helps to keep tests clean.
