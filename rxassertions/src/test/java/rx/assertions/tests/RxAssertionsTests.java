@@ -15,7 +15,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class RxAssertionsTests {
 
     @Test public void factoryMethod_BlockingObservable_ReturnsNotNull() {
-        assertThat(RxAssertions.assertThat(Observable.just(1).toBlocking()))
+        assertThat(RxAssertions.assertThat(Observable.just(1)))
                 .isNotNull();
     }
 

@@ -2,7 +2,7 @@ package rx.assertions;
 
 import org.assertj.core.api.AbstractAssert;
 import rx.Notification;
-import rx.observables.BlockingObservable;
+import rx.Observable;
 import rx.observers.TestSubscriber;
 
 import java.util.Arrays;
@@ -16,15 +16,15 @@ import static org.assertj.core.api.Assertions.assertThat;
  * Created by ubiratansoares on 5/11/16.
  */
 
-public class BlockingObservableAssert<T>
-        extends AbstractAssert<BlockingObservableAssert<T>, BlockingObservable<T>> {
+public class ObservableAssert<T>
+        extends AbstractAssert<ObservableAssert<T>, Observable<T>> {
 
     private List<Throwable> onErrorEvents;
     private List<T> onNextEvents;
     private List<Notification<T>> onCompletedEvents;
 
-    public BlockingObservableAssert(BlockingObservable<T> actual) {
-        super(actual, BlockingObservableAssert.class);
+    public ObservableAssert(Observable<T> actual) {
+        super(actual, ObservableAssert.class);
         TestSubscriber<T> subscriber = new TestSubscriber<>();
         actual.subscribe(subscriber);
         onErrorEvents = subscriber.getOnErrorEvents();
@@ -32,55 +32,55 @@ public class BlockingObservableAssert<T>
         onCompletedEvents = subscriber.getOnCompletedEvents();
     }
 
-    public BlockingObservableAssert<T> then(Action0 action) {
+    public ObservableAssert<T> then(Action0 action) {
         action.call();
         return this;
     }
 
-    public BlockingObservableAssert<T> completes() {
+    public ObservableAssert<T> completes() {
         assertThat(onCompletedEvents).isNotNull().isNotEmpty();
         return this;
     }
 
-    public BlockingObservableAssert<T> notCompletes() {
+    public ObservableAssert<T> notCompletes() {
         assertThat(onCompletedEvents).isNullOrEmpty();
         return this;
     }
 
-    public BlockingObservableAssert<T> emissionsCount(int count) {
+    public ObservableAssert<T> emissionsCount(int count) {
         assertThat(onNextEvents).isNotNull().isNotEmpty().hasSize(count);
         return this;
     }
 
-    public BlockingObservableAssert<T> fails() {
+    public ObservableAssert<T> fails() {
         assertThat(onErrorEvents).isNotNull().isNotEmpty();
         return this;
     }
 
-    public BlockingObservableAssert<T> failsWithThrowable(Class<? extends Throwable> thowableClazz) {
+    public ObservableAssert<T> failsWithThrowable(Class<? extends Throwable> thowableClazz) {
         assertThat(onErrorEvents).isNotNull();
         assertThat(onErrorEvents.get(0)).isInstanceOf(thowableClazz);
         return this;
     }
 
-    public BlockingObservableAssert<T> emitsNothing() {
+    public ObservableAssert<T> emitsNothing() {
         assertThat(onNextEvents).isEmpty();
         return this;
     }
 
-    public BlockingObservableAssert<T> receivedTerminalEvent() {
+    public ObservableAssert<T> receivedTerminalEvent() {
         assertThat(onCompletedEvents).isNotNull();
         assertThat(onErrorEvents).isNotNull();
         assertThat(onCompletedEvents.size() + onErrorEvents.size()).isEqualTo(1);
         return this;
     }
 
-    public BlockingObservableAssert<T> withoutErrors() {
+    public ObservableAssert<T> withoutErrors() {
         assertThat(onErrorEvents).isNotNull().isEmpty();
         return this;
     }
 
-    public BlockingObservableAssert<T> expectedSingleValue(T expected) {
+    public ObservableAssert<T> expectedSingleValue(T expected) {
         assertThat(onNextEvents)
                 .isNotNull()
                 .isNotEmpty()
@@ -90,15 +90,15 @@ public class BlockingObservableAssert<T>
         return this;
     }
 
-    public BlockingObservableAssert<T> expectedValues() {
+    public ObservableAssert<T> expectedValues() {
         return emitsNothing();
     }
 
-    public BlockingObservableAssert<T> expectedValues(T... expected) {
+    public ObservableAssert<T> expectedValues(T... expected) {
         return expectedValues(Arrays.asList(expected));
     }
 
-    public BlockingObservableAssert<T> expectedValues(Collection<T> expected) {
+    public ObservableAssert<T> expectedValues(Collection<T> expected) {
         assertThat(onNextEvents)
                 .isNotNull()
                 .isNotEmpty()
@@ -107,15 +107,15 @@ public class BlockingObservableAssert<T>
     }
 
     @SuppressWarnings("unchecked")
-    public BlockingObservableAssert<T> expectedBoolean(Boolean expected) {
+    public ObservableAssert<T> expectedBoolean(Boolean expected) {
         return expectedSingleValue((T) expected); // FIXME
     }
 
-    public BlockingObservableAssert<T> expectedTrue() {
+    public ObservableAssert<T> expectedTrue() {
         return expectedBoolean(true);
     }
 
-    public BlockingObservableAssert<T> expectedFalse() {
+    public ObservableAssert<T> expectedFalse() {
         return expectedBoolean(false);
     }
 }
