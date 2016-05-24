@@ -8,6 +8,7 @@ import rx.observers.TestSubscriber;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Collection;
+import rx.functions.Action0;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -29,6 +30,11 @@ public class BlockingObservableAssert<T>
         onErrorEvents = subscriber.getOnErrorEvents();
         onNextEvents = subscriber.getOnNextEvents();
         onCompletedEvents = subscriber.getOnCompletedEvents();
+    }
+
+    public BlockingObservableAssert<T> then(Action0 action) {
+        action.call();
+        return this;
     }
 
     public BlockingObservableAssert<T> completes() {
