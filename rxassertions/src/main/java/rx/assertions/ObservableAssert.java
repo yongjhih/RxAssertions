@@ -9,6 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Collection;
 import rx.functions.Action0;
+import rx.Subscription;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -22,11 +23,12 @@ public class ObservableAssert<T>
     private List<Throwable> onErrorEvents;
     private List<T> onNextEvents;
     private List<Notification<T>> onCompletedEvents;
+    private Subscription subscription;
 
     public ObservableAssert(Observable<T> actual) {
         super(actual, ObservableAssert.class);
         TestSubscriber<T> subscriber = new TestSubscriber<>();
-        actual.subscribe(subscriber);
+        subscription = actual.subscribe(subscriber);
         onErrorEvents = subscriber.getOnErrorEvents();
         onNextEvents = subscriber.getOnNextEvents();
         onCompletedEvents = subscriber.getOnCompletedEvents();
@@ -117,5 +119,10 @@ public class ObservableAssert<T>
 
     public ObservableAssert<T> expectedFalse() {
         return expectedBoolean(false);
+    }
+
+    public ObservableAssert<T> unsubscribe() {
+        if (subscription != null && subscription.isUnsubscribed()) subscription.unsubscribe();
+        return this;
     }
 }
