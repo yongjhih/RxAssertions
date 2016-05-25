@@ -17,81 +17,81 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class ObservableAssertTests {
 
-    @Test public void completesAssertiongg() {
+    @Test public void completesAssertion() {
         Observable<String> obs = Observable.just("a", "b");
         new ObservableAssert<>(obs).completes();
     }
 
-    @Test public void notCompletesAssertiongg() {
+    @Test public void notCompletesAssertion() {
         Observable obs = Observable.error(new IllegalStateException());
         new ObservableAssert<>(obs).notCompletes();
     }
 
-    @Test public void emissionsAssertiongg() {
+    @Test public void emissionsAssertion() {
         Observable<Integer> obs = Observable.range(1, 3);
         new ObservableAssert<>(obs).emissionsCount(3);
     }
 
-    @Test public void failsAssertiongg() {
+    @Test public void failsAssertion() {
         Observable obs = Observable.error(new RuntimeException());
         new ObservableAssert<>(obs).fails();
     }
 
-    @Test public void failsWithThrowableAssertiongg() {
+    @Test public void failsWithThrowableAssertion() {
         Observable obs = Observable.error(new RuntimeException());
         new ObservableAssert<>(obs).failsWithThrowable(RuntimeException.class);
     }
 
     @Test(expected = AssertionError.class)
-    public void completes_ChainingWithFail_ShouldFail() {
+    public void completesChainingWithFail() {
         Observable obs = Observable.error(new RuntimeException());
         new ObservableAssert<>(obs).fails().completes();
     }
 
-    @Test public void emitisNothingAssertiongg() {
+    @Test public void emitisNothingAssertion() {
         Observable obs = Observable.from(Collections.emptyList());
         new ObservableAssert<>(obs).emitsNothing();
     }
 
-    @Test public void receivesTerminalEvent_OnCompletedgg() {
+    @Test public void receivesTerminalEventOnCompleted() {
         Observable<String> obs = Observable.just("c", "d");
         new ObservableAssert<>(obs).receivedTerminalEvent();
     }
 
-    @Test public void receivesTerminalEvents_OnErrorgg() {
+    @Test public void receivesTerminalEventsOnError() {
         Observable obs = Observable.error(new RuntimeException());
         new ObservableAssert<>(obs).receivedTerminalEvent();
     }
 
-    @Test public void withoutErrorsgg() {
+    @Test public void withoutErrors() {
         Observable<String> obs = Observable.just("RxJava");
         new ObservableAssert<>(obs).withoutErrors();
     }
 
-    @Test public void withExpectedSingleValuegg() {
+    @Test public void withExpectedSingleValue() {
         Observable<String> obs = Observable.just("Expected");
         new ObservableAssert<>(obs).expectedSingleValue("Expected");
     }
 
     @Test(expected = AssertionError.class)
-    public void withUnexpectedSingleValue_ShouldFail() {
+    public void withUnexpectedSingleValue() {
         Observable<String> obs = Observable.just("Unexpected");
         new ObservableAssert<>(obs).expectedSingleValue("Expected");
     }
 
-    @Test public void withExpectedMultipleValuesgg() {
+    @Test public void withExpectedMultipleValues() {
         List<String> expected = Arrays.asList("Expected", "Values");
         Observable<String> obs = Observable.from(expected);
         new ObservableAssert<>(obs).expectedValues("Expected", "Values");
     }
 
-    @Test public void withExpectedFalsegg() {
+    @Test public void withExpectedFalse() {
         List<String> expected = Arrays.asList("Expected", "Values");
         Observable<Boolean> obs = Observable.from(expected).isEmpty();
         new ObservableAssert<>(obs).expectedFalse();
     }
 
-    @Test public void withExpectedTruegg() {
+    @Test public void withExpectedTrue() {
         List<String> expected = Collections.emptyList();
         Observable<Boolean> obs = Observable.from(expected).isEmpty();
         new ObservableAssert<>(obs).expectedTrue();
