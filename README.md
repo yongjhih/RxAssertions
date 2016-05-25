@@ -4,6 +4,7 @@
 [![javadoc](https://img.shields.io/github/tag/yongjhih/rxassertions.svg?label=javadoc)](https://jitpack.io/com/github/yongjhih/rxassertions/-SNAPSHOT/javadoc/)
 [![Build Status](https://travis-ci.org/yongjhih/rxassertions.svg)](https://travis-ci.org/yongjhih/rxassertions)
 [![Coverage Status](https://coveralls.io/repos/github/yongjhih/rxassertions/badge.svg)](https://coveralls.io/github/yongjhih/rxassertions)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/a1b57ba343df4503b93ca46aa4ed48d9)](https://codacy.com/app/yongjhih/rxassertions)
 
 ![RxAssertions](https://github.com/yongjhih/rxassertions/raw/master/art/rxassertions.png)
 
