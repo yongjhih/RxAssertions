@@ -14,17 +14,17 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class RxAssertionsTests {
 
-    @Test public void factoryMethod_BlockingObservable_ReturnsNotNull() {
+    @Test public void factoryMethodBlockingObservableReturnsNotNull() {
         assertThat(RxAssertions.assertThat(Observable.just(1)))
                 .isNotNull();
     }
 
-    @Test public void factoryMethod_RegularObservable_ReturnsNotNull() {
+    @Test public void factoryMethodRegularObservableReturnsNotNull() {
         assertThat(RxAssertions.assertThat(Observable.just("Test")))
                 .isNotNull();
     }
 
-    @Test public void factoryMethod_Single_ReturnsNotNull() {
+    @Test public void factoryMethodSingleReturnsNotNull() {
         Single<Boolean> single = Single.fromCallable(new java.util.concurrent.Callable<Boolean>() {
             @Override public Boolean call() {
                 return Boolean.TRUE;
@@ -33,7 +33,7 @@ public class RxAssertionsTests {
         assertThat(RxAssertions.assertThat(single)).isNotNull();
     }
 
-    @Test public void factoryMethod_Completable_ReturnsNotNull() {
+    @Test public void factoryMethodCompletableReturnsNotNull() {
         Completable completable = Completable.fromCallable(new java.util.concurrent.Callable<String>() {
             @Override public String call() {
                 return "Done";
@@ -47,7 +47,7 @@ public class RxAssertionsTests {
                 .emissionsCount(10);
     }
 
-    @Test public void canChain_TwoAssertions() {
+    @Test public void canChainTwoAssertions() {
         RxAssertions.assertThat(Observable.range(1, 5))
                 .emissionsCount(5)
                 .completes();
@@ -70,21 +70,21 @@ public class RxAssertionsTests {
                 .withoutErrors();
     }
 
-    @Test public void regularObservable_CompletesWithEmissions() {
+    @Test public void regularObservableCompletesWithEmissions() {
         RxAssertions.assertThat(Observable.just("RxJava", "Assertions"))
                 .completes()
                 .withoutErrors()
                 .expectedValues("RxJava", "Assertions");
     }
 
-    @Test public void completable_completesWithoutErrors() {
+    @Test public void completablecompletesWithoutErrors() {
         Completable trivial = Completable.fromObservable(Observable.range(1, 5));
         RxAssertions.assertThat(trivial)
                 .completes()
                 .withoutErrors();
     }
 
-    @Test public void single_CompletesWithExpectedValue() {
+    @Test public void singleCompletesWithExpectedValue() {
         Single<String> single = Single.fromCallable(new java.util.concurrent.Callable<String>() {
             @Override public String call() {
                 return "RxJava";
